@@ -4,7 +4,9 @@ type Person = {
     etc?: boolean
 };
 
-export function makePerson(name: string, age: number, etc: boolean = false): Person {
+type MakePerson = (arg0: string, arg1: number, arg2?: boolean) => Person;
+
+export const makePerson: MakePerson = (name: string, age: number, etc: boolean = false): Person => {
     const person: Person = {
         name: name,
         age: age,
