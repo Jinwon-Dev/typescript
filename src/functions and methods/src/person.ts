@@ -1,14 +1,22 @@
 class Person {
+    static numberOfPerson: number = 0;
+    
     constructor(
         private name: string,
         private age: number,
         private etc?: boolean
-    ) {}
+    ) {
+        Person.numberOfPerson++;
+    }
 
     printInfo(): void {
         console.log(`Person name: ${this.name}`);
         console.log(`Person age: ${this.age}`);
         console.log(`Person etc: ${this.etc}`);
+    }
+
+    static printNumberOfPerson() {
+        console.log(`The Number Of Person Object: ${this.numberOfPerson}`);
     }
 }
 
