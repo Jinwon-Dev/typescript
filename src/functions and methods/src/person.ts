@@ -5,7 +5,7 @@ class Person {
         private etc?: boolean
     ) {}
 
-    printInfo: () => void = (): void => {
+    printInfo(): void {
         console.log(`Person name: ${this.name}`);
         console.log(`Person age: ${this.age}`);
         console.log(`Person etc: ${this.etc}`);
