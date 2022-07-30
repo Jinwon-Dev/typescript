@@ -20,8 +20,24 @@ export default class Person {
     }
 }
 
-type MakePerson = (arg0: string, arg1: number, arg2?: boolean) => Person;
+type MakePerson = (string, number, boolean?) => Person;
 
-export const makePerson: MakePerson = (name: string, age: number, etc: boolean = false): Person => {
-    return new Person(name, age, etc);
+class MakePersonData {
+    private _name: string;
+    age: number;
+    etc: boolean;
+
+    public get name(): string {
+        return this._name;
+    }
+
+    public set name(name: string) {
+        this._name = name;
+    }
+}
+
+export const makePerson: (personData: MakePersonData) => Person = (personData: Readonly<MakePersonData>): Person => {
+    console.log (personData.name);
+
+    return new Person(personData.name, personData.age, personData.etc);
 };
