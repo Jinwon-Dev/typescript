@@ -3,6 +3,8 @@ import {Valuable} from "./valuable";
 import {printValue} from "./print-value";
 import {parseNumber} from "./parse-number";
 import {mergeObjects} from "./merge-objects";
+import {ICircle, IRectangle, ISquare} from "./shape";
+import {calculatorArea} from "./calculator-area";
 
 try {
     occurErrorMethod();
@@ -30,3 +32,15 @@ const objectWithNameAndAge: INameable & IAgeable = mergeObjects(
     {name: 'Jinwon'}, {age: 24}
 );
 console.log(objectWithNameAndAge);
+
+const square: ISquare = {tag: 'square', size: 10};
+
+const rectangle: IRectangle = {tag: 'rectangle', width: 4, height: 5};
+
+const circle: ICircle = {tag: 'circle', radius: 10};
+
+console.log(
+    calculatorArea(square),
+    calculatorArea(rectangle),
+    calculatorArea(circle)
+);
