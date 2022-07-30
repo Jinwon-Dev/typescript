@@ -2,6 +2,7 @@ import {occurErrorMethod} from "./occur-error.method";
 import {Valuable} from "./valuable";
 import {printValue} from "./print-value";
 import {parseNumber} from "./parse-number";
+import {mergeObjects} from "./merge-objects";
 
 try {
     occurErrorMethod();
@@ -16,3 +17,16 @@ printValue(new Valuable<number[]>([1, 2, 3]));
 
 const result: number = parseNumber(new Valuable('123'));
 console.log(result);
+
+type INameable = {
+    name: string
+};
+
+type IAgeable = {
+    age: number
+};
+
+const objectWithNameAndAge: INameable & IAgeable = mergeObjects(
+    {name: 'Jinwon'}, {age: 24}
+);
+console.log(objectWithNameAndAge);
