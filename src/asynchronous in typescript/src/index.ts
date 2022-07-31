@@ -1,5 +1,4 @@
 import {readFile, readFileSync} from "fs";
-import * as Buffer from "buffer";
 import {readFilePromise} from "./read-file.promise";
 
 readFile('./package.json', (error: Error, buffer: Buffer) => {
@@ -18,7 +17,20 @@ console.log(buffer.toString());
 readFilePromise('./package.json')
     .then((value: string) => {
         console.log(value);
+        return readFilePromise('./tsconfig.json');
+    })
+    .then((value: string) => {
+        console.log('print tsconfig.json')
+        console.log(value);
     })
     .catch((error) => {
         console.error(error);
     })
+
+const asyncFunction = async (): Promise<void> => {
+    const result = await readFilePromise('./package.json');
+    console.log(result);
+    const result2 = await readFilePromise('./tsconfig.json');
+    console.log(result2);
+}
+asyncFunction();
